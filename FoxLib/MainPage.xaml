@@ -80,7 +80,7 @@
                         </VerticalStackLayout>
                         <Image Source="font_icon.png" HeightRequest="18" />
                     </Grid>
-                    <!-- Repeat items... -->
+
                 </VerticalStackLayout>
             </VerticalStackLayout>
         </Frame>

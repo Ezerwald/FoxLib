@@ -3,10 +3,74 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FoxLib.LibraryPage"
              Title="Library">
+    
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to Library!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        
+        <!-- Search and Filter Row -->
+        <Grid Padding="10" ColumnSpacing="10" BackgroundColor = "{StaticResource LightPurple}" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <SearchBar
+        x:Name="SearchBar"
+        Grid.Column="0"
+        Placeholder="Search book..."
+        Margin="0"
+        HeightRequest="40" />
+        </Grid>
+
+        <!-- Tabs -->
+        <Grid BackgroundColor="White" Padding="10,0">
+            <CollectionView
+        ItemsSource="{Binding FilterTabs}" 
+        SelectionMode="Single" 
+        x:Name="FilterTabsView"
+        HeightRequest="40"
+        ItemsLayout="HorizontalList">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label
+                    Text="{Binding}"
+                    Margin="10,0"
+                    FontAttributes="Bold"
+                    VerticalOptions="Center"
+                    TextColor="{StaticResource ColorTextPrimary}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+
+        <!-- List Items -->
+        <CollectionView
+            x:Name="LibraryItems"
+            ItemsSource="{Binding LibraryItems}"
+            Margin="10"
+            SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame
+                        BackgroundColor="{StaticResource ColorSurface}"
+                        CornerRadius="12"
+                        Padding="10"
+                        Margin="0,5"
+                        HasShadow="False"
+                        BorderColor="#E5E5E5">
+                        <VerticalStackLayout>
+                            <Label Text="List item"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource ColorTextPrimary}" />
+                            <Label Text="Supporting line text lorem ipsum dolor sit amet, consectetur."
+                                   FontSize="12"
+                                   TextColor="{StaticResource ColorTextSecondary}" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
     </VerticalStackLayout>
 </ContentPage>

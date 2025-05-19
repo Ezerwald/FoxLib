@@ -3,10 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FoxLib.SearchPage"
              Title="Search">
+
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to Search Page!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+
     </VerticalStackLayout>
 </ContentPage>
