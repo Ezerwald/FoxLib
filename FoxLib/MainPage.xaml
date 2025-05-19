@@ -7,6 +7,84 @@
     <VerticalStackLayout
             Padding="30,0"
             Spacing="25">
+
+
+        <!-- Suggestions Section -->
+        <Label Text="Suggestions"
+               Padding="0,25, 0, 0"
+               FontSize="Large"    
+               />
+
+        <!-- Suggestions Carousel -->
+        <ScrollView Orientation="Horizontal">
+            <HorizontalStackLayout HeightRequest="170" Spacing="12">
+                <!-- Example Card -->
+                <Frame CornerRadius="12" Padding="8" WidthRequest="130">
+                    <VerticalStackLayout>
+                        <Image Source="dotnet_bot.png" HeightRequest="100" />
+                        <Label Text="Book" FontAttributes="Bold" FontSize="14" />
+                        <Label Text="Author" FontSize="12" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame CornerRadius="12" Padding="8" WidthRequest="130">
+                    <VerticalStackLayout>
+                        <Image Source="dotnet_bot.png" HeightRequest="100" />
+                        <Label Text="Book" FontAttributes="Bold" FontSize="14" />
+                        <Label Text="Author" FontSize="12" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame CornerRadius="12" Padding="8" WidthRequest="130">
+                    <VerticalStackLayout>
+                        <Image Source="dotnet_bot.png" HeightRequest="100" />
+                        <Label Text="Book" FontAttributes="Bold" FontSize="14" />
+                        <Label Text="Author" FontSize="12" />
+                    </VerticalStackLayout>
+                </Frame>
+
+            </HorizontalStackLayout>
+        </ScrollView>
+
+        <!-- Recently Viewed Section -->
+        <Frame CornerRadius="12" Padding="16">
+            <VerticalStackLayout Spacing="12">
+                <Label Text="Recently viewed" FontSize="20" />
+                <BoxView HeightRequest="1"/>
+
+                <!-- List Items -->
+                <VerticalStackLayout>
+                    <!-- Item Template -->
+                    <Grid ColumnDefinitions="Auto,*,Auto" Padding="4">
+                        <Image Source="dotnet_bot.png" HeightRequest="50" Margin="0,0,20,0"/>
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label Text="Book" FontAttributes="Bold" />
+                            <Label Text="Author" FontSize="12" TextColor="{StaticResource IconGray}" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="Auto,*,Auto" Padding="4">
+                        <Image Source="dotnet_bot.png" HeightRequest="50" Margin="0,0,20,0"/>
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label Text="Book" FontAttributes="Bold" />
+                            <Label Text="Author" FontSize="12" TextColor="{StaticResource IconGray}" />
+                        </VerticalStackLayout>
+                        <Image Source="font_icon.png" HeightRequest="18" />
+                    </Grid>
+
+                    <Grid ColumnDefinitions="Auto,*,Auto" Padding="4">
+                        <Image Source="dotnet_bot.png" HeightRequest="50" Margin="0,0,20,0"/>
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label Text="Book" FontAttributes="Bold" />
+                            <Label Text="Author" FontSize="12" TextColor="{StaticResource IconGray}" />
+                        </VerticalStackLayout>
+                        <Image Source="font_icon.png" HeightRequest="18" />
+                    </Grid>
+                    <!-- Repeat items... -->
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </Frame>
+
     </VerticalStackLayout>
 
 </ContentPage>
