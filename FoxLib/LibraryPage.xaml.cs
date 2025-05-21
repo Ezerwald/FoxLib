@@ -4,9 +4,12 @@ namespace FoxLib;
 
 public partial class LibraryPage : ContentPage
 {
-    public ObservableCollection<string> FilterTabs { get; set; } = new() { "All", "Active", "Finished", "New" };
+    public ObservableCollection<string> FilterTabs { get; set; } = [];
+    public int FilterTabsCount;
     public LibraryPage()
-	{
+    {
+        FilterTabs = ["All", "Active", "Finished", "New"];
+
         InitializeComponent();
         BindingContext = this;
     }

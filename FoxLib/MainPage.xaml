@@ -59,7 +59,7 @@
                         <Image Source="dotnet_bot.png" HeightRequest="50" Margin="0,0,20,0"/>
                         <VerticalStackLayout Grid.Column="1">
                             <Label Text="Book" FontAttributes="Bold" />
-                            <Label Text="Author" FontSize="12" TextColor="{StaticResource IconGray}" />
+                            <Label Text="Author" FontSize="12" />
                         </VerticalStackLayout>
                     </Grid>
 
@@ -67,20 +67,9 @@
                         <Image Source="dotnet_bot.png" HeightRequest="50" Margin="0,0,20,0"/>
                         <VerticalStackLayout Grid.Column="1">
                             <Label Text="Book" FontAttributes="Bold" />
-                            <Label Text="Author" FontSize="12" TextColor="{StaticResource IconGray}" />
+                            <Label Text="Author" FontSize="12" />
                         </VerticalStackLayout>
-                        <Image Source="font_icon.png" HeightRequest="18" />
                     </Grid>
-
-                    <Grid ColumnDefinitions="Auto,*,Auto" Padding="4">
-                        <Image Source="dotnet_bot.png" HeightRequest="50" Margin="0,0,20,0"/>
-                        <VerticalStackLayout Grid.Column="1">
-                            <Label Text="Book" FontAttributes="Bold" />
-                            <Label Text="Author" FontSize="12" TextColor="{StaticResource IconGray}" />
-                        </VerticalStackLayout>
-                        <Image Source="font_icon.png" HeightRequest="18" />
-                    </Grid>
-
                 </VerticalStackLayout>
             </VerticalStackLayout>
         </Frame>

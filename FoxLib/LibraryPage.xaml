@@ -1,44 +1,58 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FoxLib.LibraryPage"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+             xmlns:local="clr-namespace:FoxLib.Converters"
+             x:Class="FoxLib.LibraryPage"  
              Title="Library">
-    
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:DivideByFourConverter x:Key="DivideByFourConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <VerticalStackLayout>
-        
+
         <!-- Search Row -->
-        <Grid Padding="10" ColumnSpacing="10" BackgroundColor = "{StaticResource LightPurple}" >
+        <Grid Padding="10" ColumnSpacing="10" BackgroundColor="{StaticResource LightPurple}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <SearchBar
-        x:Name="SearchBar"
-        Grid.Column="0"
-        Placeholder="Search book..."
-        Margin="0"
-        HeightRequest="40" />
+            <SearchBar  
+                x:Name="SearchBar"  
+                Grid.Column="0"  
+                Placeholder="Search book..."  
+                Margin="0"  
+                HeightRequest="40" />
         </Grid>
 
         <!-- Tabs -->
-        <Grid>
-            <CollectionView
-                ItemsSource="{Binding FilterTabs}" 
-                SelectionMode="Single" 
-                x:Name="FilterTabsView"
-                HeightRequest="40"
+        <Grid x:Name="TabsGrid">
+            <CollectionView  
+                ItemsSource="{Binding FilterTabs}"   
+                SelectionMode="Single"   
+                x:Name="FilterTabsView"  
+                HeightRequest="40"  
                 ItemsLayout="HorizontalList">
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Label
-                            Text="{Binding}"
-                            Margin="10,0"
-                            FontAttributes="Bold"
-                            VerticalOptions="Center"
-                            TextColor="{StaticResource ColorTextPrimary}" />
+                        <Grid 
+                            WidthRequest="{Binding Source={x:Reference TabsGrid}, Path=Width, Converter={StaticResource DivideByFourConverter}}"
+                            BackgroundColor="{StaticResource LightGray}"
+                            HorizontalOptions="Start"
+                            Padding="5">
+                            <Label  
+                                Text="{Binding}"  
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                FontAttributes="Bold"  
+                                TextColor="Black"/>
+                        </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
