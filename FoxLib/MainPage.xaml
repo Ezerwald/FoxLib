@@ -19,24 +19,32 @@
                 <!-- Example Card -->
                 <Frame CornerRadius="12" Padding="8" WidthRequest="130">
                     <VerticalStackLayout>
-                        <Image Source="dotnet_bot.png" HeightRequest="100" />
-                        <Label Text="Book" FontAttributes="Bold" FontSize="14" />
+                        <Image Source="place_holder.png" HeightRequest="100" />
+                        <Label Text="Book 1" FontAttributes="Bold" FontSize="14" />
                         <Label Text="Author" FontSize="12" />
                     </VerticalStackLayout>
                 </Frame>
 
                 <Frame CornerRadius="12" Padding="8" WidthRequest="130">
                     <VerticalStackLayout>
-                        <Image Source="dotnet_bot.png" HeightRequest="100" />
-                        <Label Text="Book" FontAttributes="Bold" FontSize="14" />
+                        <Image Source="place_holder.png" HeightRequest="100" />
+                        <Label Text="Book 2" FontAttributes="Bold" FontSize="14" />
                         <Label Text="Author" FontSize="12" />
                     </VerticalStackLayout>
                 </Frame>
 
                 <Frame CornerRadius="12" Padding="8" WidthRequest="130">
                     <VerticalStackLayout>
-                        <Image Source="dotnet_bot.png" HeightRequest="100" />
-                        <Label Text="Book" FontAttributes="Bold" FontSize="14" />
+                        <Image Source="place_holder.png" HeightRequest="100" />
+                        <Label Text="Book 3" FontAttributes="Bold" FontSize="14" />
+                        <Label Text="Author" FontSize="12" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame CornerRadius="12" Padding="8" WidthRequest="130">
+                    <VerticalStackLayout>
+                        <Image Source="place_holder.png" HeightRequest="100" />
+                        <Label Text="Book 4" FontAttributes="Bold" FontSize="14" />
                         <Label Text="Author" FontSize="12" />
                     </VerticalStackLayout>
                 </Frame>
@@ -54,7 +62,7 @@
                 <VerticalStackLayout>
                     <!-- Item Template -->
                     <Grid ColumnDefinitions="Auto,*,Auto" Padding="4">
-                        <Image Source="dotnet_bot.png" HeightRequest="50" Margin="0,0,20,0"/>
+                        <Image Source="place_holder.png" HeightRequest="50" Margin="0,0,20,0"/>
                         <VerticalStackLayout Grid.Column="1">
                             <Label Text="Book" FontAttributes="Bold" />
                             <Label Text="Author" FontSize="12" />
@@ -62,7 +70,23 @@
                     </Grid>
 
                     <Grid ColumnDefinitions="Auto,*,Auto" Padding="4">
-                        <Image Source="dotnet_bot.png" HeightRequest="50" Margin="0,0,20,0"/>
+                        <Image Source="place_holder.png" HeightRequest="50" Margin="0,0,20,0"/>
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label Text="Book" FontAttributes="Bold" />
+                            <Label Text="Author" FontSize="12" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="Auto,*,Auto" Padding="4">
+                        <Image Source="place_holder.png" HeightRequest="50" Margin="0,0,20,0"/>
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label Text="Book" FontAttributes="Bold" />
+                            <Label Text="Author" FontSize="12" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="Auto,*,Auto" Padding="4">
+                        <Image Source="place_holder.png" HeightRequest="50" Margin="0,0,20,0"/>
                         <VerticalStackLayout Grid.Column="1">
                             <Label Text="Book" FontAttributes="Bold" />
                             <Label Text="Author" FontSize="12" />

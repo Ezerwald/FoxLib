@@ -5,6 +5,140 @@
              Title="Search">
 
     <VerticalStackLayout>
+        <!-- Search Row -->
+        <Grid Padding="10" ColumnSpacing="10" BackgroundColor="{StaticResource LightPurple}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
 
+            <SearchBar  
+                x:Name="SearchBar"  
+                Grid.Column="0"  
+                Placeholder="Search book..."  
+                Margin="0"  
+                HeightRequest="40" />
+        </Grid>
+
+        <!-- List Items -->
+        <ScrollView Orientation="Vertical" HeightRequest="640">
+            <VerticalStackLayout
+        Padding="25">
+
+                <!-- Item Template -->
+                <Grid ColumnDefinitions="Auto,*,Auto" Padding="4">
+                    <Image Source="place_holder.png" HeightRequest="50" Margin="0,0,20,0"/>
+                    <VerticalStackLayout Grid.Column="1">
+                        <Label Text="Book" FontAttributes="Bold" />
+                        <Label Text="Author" FontSize="12" />
+                    </VerticalStackLayout>
+                </Grid>
+
+                <Grid ColumnDefinitions="Auto,*,Auto" Padding="4">
+                    <Image Source="place_holder.png" HeightRequest="50" Margin="0,0,20,0"/>
+                    <VerticalStackLayout Grid.Column="1">
+                        <Label Text="Book" FontAttributes="Bold" />
+                        <Label Text="Author" FontSize="12" />
+                    </VerticalStackLayout>
+                </Grid>
+
+                <Grid ColumnDefinitions="Auto,*,Auto" Padding="4">
+                    <Image Source="place_holder.png" HeightRequest="50" Margin="0,0,20,0"/>
+                    <VerticalStackLayout Grid.Column="1">
+                        <Label Text="Book" FontAttributes="Bold" />
+                        <Label Text="Author" FontSize="12" />
+                    </VerticalStackLayout>
+                </Grid>
+
+                <Grid ColumnDefinitions="Auto,*,Auto" Padding="4">
+                    <Image Source="place_holder.png" HeightRequest="50" Margin="0,0,20,0"/>
+                    <VerticalStackLayout Grid.Column="1">
+                        <Label Text="Book" FontAttributes="Bold" />
+                        <Label Text="Author" FontSize="12" />
+                    </VerticalStackLayout>
+                </Grid>
+
+                <Grid ColumnDefinitions="Auto,*,Auto" Padding="4">
+                    <Image Source="place_holder.png" HeightRequest="50" Margin="0,0,20,0"/>
+                    <VerticalStackLayout Grid.Column="1">
+                        <Label Text="Book" FontAttributes="Bold" />
+                        <Label Text="Author" FontSize="12" />
+                    </VerticalStackLayout>
+                </Grid>
+
+                <Grid ColumnDefinitions="Auto,*,Auto" Padding="4">
+                    <Image Source="place_holder.png" HeightRequest="50" Margin="0,0,20,0"/>
+                    <VerticalStackLayout Grid.Column="1">
+                        <Label Text="Book" FontAttributes="Bold" />
+                        <Label Text="Author" FontSize="12" />
+                    </VerticalStackLayout>
+                </Grid>
+
+                <Grid ColumnDefinitions="Auto,*,Auto" Padding="4">
+                    <Image Source="place_holder.png" HeightRequest="50" Margin="0,0,20,0"/>
+                    <VerticalStackLayout Grid.Column="1">
+                        <Label Text="Book" FontAttributes="Bold" />
+                        <Label Text="Author" FontSize="12" />
+                    </VerticalStackLayout>
+                </Grid>
+
+                <Grid ColumnDefinitions="Auto,*,Auto" Padding="4">
+                    <Image Source="place_holder.png" HeightRequest="50" Margin="0,0,20,0"/>
+                    <VerticalStackLayout Grid.Column="1">
+                        <Label Text="Book" FontAttributes="Bold" />
+                        <Label Text="Author" FontSize="12" />
+                    </VerticalStackLayout>
+                </Grid>
+
+                <Grid ColumnDefinitions="Auto,*,Auto" Padding="4">
+                    <Image Source="place_holder.png" HeightRequest="50" Margin="0,0,20,0"/>
+                    <VerticalStackLayout Grid.Column="1">
+                        <Label Text="Book" FontAttributes="Bold" />
+                        <Label Text="Author" FontSize="12" />
+                    </VerticalStackLayout>
+                </Grid>
+
+                <Grid ColumnDefinitions="Auto,*,Auto" Padding="4">
+                    <Image Source="place_holder.png" HeightRequest="50" Margin="0,0,20,0"/>
+                    <VerticalStackLayout Grid.Column="1">
+                        <Label Text="Book" FontAttributes="Bold" />
+                        <Label Text="Author" FontSize="12" />
+                    </VerticalStackLayout>
+                </Grid>
+
+                <Grid ColumnDefinitions="Auto,*,Auto" Padding="4">
+                    <Image Source="place_holder.png" HeightRequest="50" Margin="0,0,20,0"/>
+                    <VerticalStackLayout Grid.Column="1">
+                        <Label Text="Book" FontAttributes="Bold" />
+                        <Label Text="Author" FontSize="12" />
+                    </VerticalStackLayout>
+                </Grid>
+
+                <Grid ColumnDefinitions="Auto,*,Auto" Padding="4">
+                    <Image Source="place_holder.png" HeightRequest="50" Margin="0,0,20,0"/>
+                    <VerticalStackLayout Grid.Column="1">
+                        <Label Text="Book" FontAttributes="Bold" />
+                        <Label Text="Author" FontSize="12" />
+                    </VerticalStackLayout>
+                </Grid>
+
+                <Grid ColumnDefinitions="Auto,*,Auto" Padding="4">
+                    <Image Source="place_holder.png" HeightRequest="50" Margin="0,0,20,0"/>
+                    <VerticalStackLayout Grid.Column="1">
+                        <Label Text="Book" FontAttributes="Bold" />
+                        <Label Text="Author" FontSize="12" />
+                    </VerticalStackLayout>
+                </Grid>
+
+                <Grid ColumnDefinitions="Auto,*,Auto" Padding="4">
+                    <Image Source="place_holder.png" HeightRequest="50" Margin="0,0,20,0"/>
+                    <VerticalStackLayout Grid.Column="1">
+                        <Label Text="Book" FontAttributes="Bold" />
+                        <Label Text="Author" FontSize="12" />
+                    </VerticalStackLayout>
+                </Grid>
+            </VerticalStackLayout>
+        </ScrollView>
     </VerticalStackLayout>
 </ContentPage>
