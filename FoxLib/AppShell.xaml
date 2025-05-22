@@ -10,16 +10,19 @@
     <TabBar>
         <ShellContent
             Title="Home"
+            Icon="btn_home.svg"
             ContentTemplate="{DataTemplate local:MainPage}"
             Route="MainPage" />
 
         <ShellContent
             Title="Library"
+            Icon="btn_library.svg"
             ContentTemplate="{DataTemplate local:LibraryPage}"
             Route="LibraryPage" />
 
         <ShellContent
             Title="Search"
+            Icon="btn_search.svg"
             ContentTemplate="{DataTemplate local:SearchPage}"
             Route="SearchPage" />
     </TabBar>
