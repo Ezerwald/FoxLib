@@ -5,14 +5,14 @@ namespace FoxLib;
 
 public partial class LibraryPage : ContentPage
 {
-    private LibraryViewModel viewModel;
-
     private Button _selectedTab;
+    private LibraryViewModel viewModel;
 
     public LibraryPage()
     {
         InitializeComponent();
         SelectTab(TabAll); // default selected tab
+
         BindingContext = viewModel = new LibraryViewModel();
     }
 
@@ -42,5 +42,11 @@ public partial class LibraryPage : ContentPage
         newTab.TextColor = Application.Current.Resources["White"] as Color ?? Colors.White;
 
         _selectedTab = newTab;
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        viewModel.LoadBooksCommand.Execute(null);
     }
 }
