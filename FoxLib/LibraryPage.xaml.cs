@@ -1,15 +1,19 @@
 using System.Collections.ObjectModel;
+using FoxLib.ViewModels;
 
 namespace FoxLib;
 
 public partial class LibraryPage : ContentPage
 {
+    private LibraryViewModel viewModel;
+
     private Button _selectedTab;
 
     public LibraryPage()
     {
         InitializeComponent();
         SelectTab(TabAll); // default selected tab
+        BindingContext = viewModel = new LibraryViewModel();
     }
 
     private void OnTabClicked(object sender, EventArgs e)
