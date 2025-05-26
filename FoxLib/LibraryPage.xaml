@@ -29,34 +29,21 @@
                 HeightRequest="40" />
         </Grid>
 
-        <!-- Tabs -->
-        <Grid x:Name="TabsGrid">
-            <CollectionView  
-                ItemsSource="{Binding FilterTabs}"   
-                SelectionMode="Single"   
-                x:Name="FilterTabsView"  
-                HeightRequest="40"  
-                ItemsLayout="HorizontalList">
+        <!-- Filter tabs -->
+        <Grid x:Name="TabsGrid" ColumnSpacing="0" HeightRequest="40">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid 
-                            WidthRequest="{Binding Source={x:Reference TabsGrid}, Path=Width, Converter={StaticResource DivideByFourConverter}}"
-                            BackgroundColor="{StaticResource LightGray}"
-                            HorizontalOptions="Start"
-                            Padding="5">
-                            <Label  
-                                Text="{Binding}"  
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center"
-                                HorizontalTextAlignment="Center"
-                                FontAttributes="Bold"  
-                                TextColor="Black"/>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+            <Button x:Name="TabAll" Text="All" Grid.Column="0" Clicked="OnTabClicked" BackgroundColor="{StaticResource White}" TextColor="{StaticResource Black}"/>
+            <Button x:Name="TabBooks" Text="Active" Grid.Column="1" Clicked="OnTabClicked" BackgroundColor="{StaticResource White}" TextColor="{StaticResource Black}"/>
+            <Button x:Name="TabPoems" Text="Finished" Grid.Column="2" Clicked="OnTabClicked" BackgroundColor="{StaticResource White}" TextColor="{StaticResource Black}"/>
+                <Button x:Name="TabQuotes" Text="New" Grid.Column="3" Clicked="OnTabClicked" BackgroundColor="{StaticResource White}" TextColor="{StaticResource Black}"/>
         </Grid>
+
 
         <!-- List Items -->
         <ScrollView Orientation="Vertical" HeightRequest="600">
