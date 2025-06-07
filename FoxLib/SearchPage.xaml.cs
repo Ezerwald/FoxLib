@@ -12,4 +12,12 @@ public partial class SearchPage : ContentPage
         viewModel = new SearchViewModel();
         BindingContext = viewModel;
     }
+
+    private void SearchBar_SearchButtonPressed(object sender, EventArgs e)
+    {
+        if (BindingContext is SearchViewModel vm)
+        {
+            vm.SearchCommand.Execute(null);
+        }
+    }
 }
