@@ -14,12 +14,14 @@ namespace FoxLib.ViewModels
     {
         public ObservableCollection<Book> Books { get; set; } = new ObservableCollection<Book>();
 
+        public ICommand LoadBooksCommand { get; }
+        public ICommand AddDummyBookCommand { get; }
+
         public LibraryViewModel()
         {
             LoadBooksCommand = new Command(async () => await LoadBooksAsync());
+            AddDummyBookCommand = new Command(async () => await AddDummyBookAsync());
         }
-
-        public ICommand LoadBooksCommand { get; }
 
         private async Task LoadBooksAsync()
         {
@@ -28,6 +30,34 @@ namespace FoxLib.ViewModels
             foreach (var book in books)
                 Books.Add(book);
         }
+        
+        private async Task AddDummyBookAsync()
+        {
+            var dummyBook = new Book
+            {
+                Title = "Sample Book",
+                Author = "Unknown Author",
+                Description = "This is a sample book for testing.",
+                CoverImageUrl = "", // Empty to test placeholder later
+                Status = ReadingStatus.New
+            };
+
+            await App.Database.SaveBookAsync(dummyBook);
+            await LoadBooksAsync();
+        }
+
+        public async Task LoadBooksByStatusAsync(ReadingStatus? status)
+        {
+            Books.Clear();
+
+            var books = status.HasValue
+                ? await App.Database.GetBooksByStatusAsync(status.Value)
+                : await App.Database.GetBooksAsync();
+
+            foreach (var book in books)
+                Books.Add(book);
+        }
+
     }
 }
 
