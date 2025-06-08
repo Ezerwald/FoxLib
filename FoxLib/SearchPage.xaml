@@ -40,6 +40,8 @@
 
                             <Button Text="Add"
                                     Grid.Column="2"
+                                    CornerRadius="10"
+                                    Margin="10"
                                     Command="{Binding BindingContext.AddToLibraryCommand, Source={x:Reference Name=SearchPageRoot}}"
                                     CommandParameter="{Binding}" />
                         </Grid>
