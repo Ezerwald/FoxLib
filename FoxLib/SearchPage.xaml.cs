@@ -9,8 +9,7 @@ public partial class SearchPage : ContentPage
     public SearchPage()
     {
         InitializeComponent();
-        viewModel = new SearchViewModel();
-        BindingContext = viewModel;
+        BindingContext = viewModel = new SearchViewModel(); ;
     }
 
     private void SearchBar_SearchButtonPressed(object sender, EventArgs e)
