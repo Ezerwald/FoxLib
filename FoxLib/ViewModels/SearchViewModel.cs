@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Microsoft.Maui;
 
 namespace FoxLib.ViewModels
 {
@@ -54,9 +55,11 @@ namespace FoxLib.ViewModels
                     var book = new Book
                     {
                         Title = volumeInfo.GetPropertyOrDefault("title", "No title"),
-                        Author = volumeInfo.GetPropertyOrDefault("authors", "Unknown author"),
+                        Author = volumeInfo.TryGetProperty("authors", out JsonElement authorsElement) && authorsElement.ValueKind == JsonValueKind.Array
+                            ? string.Join(", ", authorsElement.EnumerateArray().Select(a => a.GetString()))
+                            : "Unknown author",
                         Description = volumeInfo.GetPropertyOrDefault("description", "No description"),
-                        CoverImageUrl = volumeInfo.GetNestedPropertyOrDefault("imageLinks", "thumbnail", ""),
+                        CoverImageUrl = EnsureHttps(volumeInfo.GetNestedPropertyOrDefault("imageLinks", "thumbnail", "")),
                         Status = ReadingStatus.New
                     };
 
@@ -65,9 +68,18 @@ namespace FoxLib.ViewModels
             }
         }
 
+        private string EnsureHttps(string url)
+        {
+            if (string.IsNullOrWhiteSpace(url))
+                return "";
+
+            return url.StartsWith("http://") ? url.Replace("http://", "https://") : url;
+        }
+
         private async Task AddToLibraryAsync(Book book)
         {
             await App.Database.SaveBookAsync(book);
+            await Application.Current.MainPage.DisplayAlert("Alert", "You added new book to Library", "OK");
         }
     }
 
