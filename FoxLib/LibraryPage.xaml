@@ -77,7 +77,6 @@
         <!-- Add Dummy Book Button -->
         <Button Text="Add Dummy Book"
             Command="{Binding AddDummyBookCommand}"
-            BackgroundColor="{DynamicResource Primary}"
             TextColor="White"
             Margin="0,0,0,10"/>
 
