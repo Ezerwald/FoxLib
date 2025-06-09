@@ -59,6 +59,7 @@ public partial class LibraryPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        viewModel.LoadBooksCommand.Execute(null);
+        _ = viewModel.LoadBooksByStatusAsync(viewModel.CurrentFilter); // instead of LoadBooksCommand.Execute(null);
     }
+
 }
