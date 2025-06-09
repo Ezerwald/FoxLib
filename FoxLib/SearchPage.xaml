@@ -23,6 +23,12 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Frame Padding="5" Margin="5" HasShadow="True" HeightRequest="80">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding BindingContext.BookTappedCommand, Source={x:Reference Name=SearchPageRoot}}"
+                                        CommandParameter="{Binding .}" />
+                                </Frame.GestureRecognizers>
+
                                 <Grid ColumnDefinitions="Auto,*,Auto" Padding="4" VerticalOptions="Center">
                                     <Image HeightRequest="60" WidthRequest="40" Margin="0,0,20,0" Aspect="AspectFill">
                                         <Image.Triggers>

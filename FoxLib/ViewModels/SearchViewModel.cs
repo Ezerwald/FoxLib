@@ -27,11 +27,27 @@ namespace FoxLib.ViewModels
         public ICommand SearchCommand { get; }
         public ICommand AddToLibraryCommand { get; }
 
+        public ICommand BookTappedCommand { get; }
+
         public SearchViewModel()
         {
             SearchCommand = new Command(async () => await SearchBooksAsync());
             AddToLibraryCommand = new Command<Book>(async (book) => await AddToLibraryAsync(book));
+            BookTappedCommand = new Command<Book>(async (book) => await NavigateToRecommendationAsync(book));
+
         }
+
+        private async Task NavigateToRecommendationAsync(Book book)
+        {
+            if (book != null)
+            {
+                await Shell.Current.GoToAsync(nameof(RecommendationDetailsPage), true, new Dictionary<string, object>
+        {
+            { "SelectedBook", book }
+        });
+            }
+        }
+
 
         private async Task SearchBooksAsync()
         {
@@ -79,7 +95,7 @@ namespace FoxLib.ViewModels
         private async Task AddToLibraryAsync(Book book)
         {
             await App.Database.SaveBookAsync(book);
-            await Application.Current.MainPage.DisplayAlert("Notification", "You added new book to Library", "OK");
+            await Application.Current.MainPage.DisplayAlert("Success", "Book added to your library!", "OK");
         }
     }
 
