@@ -20,6 +20,7 @@ namespace FoxLib.ViewModels
             AddDummyBookCommand = new Command(async () => await AddDummyBookAsync());
 
             ShowBookMenuCommand = new Command<Book>(async (book) => await ShowMenuAsync(book));
+            BookTappedCommand = new Command<Book>(async (book) => await NavigateToBookAsync(book));
         }
 
 
@@ -104,6 +105,19 @@ namespace FoxLib.ViewModels
             }
         }
 
+
+        public ICommand BookTappedCommand { get; }
+
+        private async Task NavigateToBookAsync(Book book)
+        {
+            if (book != null)
+            {
+                await Shell.Current.GoToAsync(nameof(BookDetailsPage), true, new Dictionary<string, object>
+        {
+            { "SelectedBook", book }
+        });
+            }
+        }
     }
 }
 

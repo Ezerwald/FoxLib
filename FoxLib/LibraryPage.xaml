@@ -55,6 +55,12 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Frame Padding="5" Margin="5" HasShadow="True" HeightRequest="80">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding BindingContext.BookTappedCommand, Source={x:Reference Name=LibraryPageRoot}}"
+                                        CommandParameter="{Binding .}" />
+                                </Frame.GestureRecognizers>
+
                                 <Grid ColumnDefinitions="Auto,*,Auto" Padding="4" VerticalOptions="Center">
                                     <!-- Book Cover -->
                                     <Image HeightRequest="60" WidthRequest="40" Margin="0,0,20,0" Aspect="AspectFill">
@@ -76,14 +82,14 @@
 
                                     <!-- Three Dots Menu -->
                                     <Button Grid.Column="2"
-                                        Text="⋮"
-                                        TextColor="Black"
-                                        FontSize="28"
-                                        WidthRequest="10"
-                                        HeightRequest="100"
-                                        BackgroundColor="Transparent"
-                                        Command="{Binding BindingContext.ShowBookMenuCommand, Source={x:Reference Name=LibraryPageRoot}}"
-                                        CommandParameter="{Binding .}" />
+                                            Text="⋮"
+                                            TextColor="Black"
+                                            FontSize="28"
+                                            WidthRequest="10"
+                                            HeightRequest="100"
+                                            BackgroundColor="Transparent"
+                                            Command="{Binding BindingContext.ShowBookMenuCommand, Source={x:Reference Name=LibraryPageRoot}}"
+                                            CommandParameter="{Binding .}" />
                                 </Grid>
                             </Frame>
                         </DataTemplate>

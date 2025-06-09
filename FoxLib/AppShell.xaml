@@ -7,6 +7,7 @@
     Title="FoxLib"
     Shell.FlyoutBehavior="Flyout">
 
+    <!-- Navigation bar -->
     <TabBar>
         <ShellContent
             Title="Home"
@@ -26,4 +27,5 @@
             ContentTemplate="{DataTemplate local:SearchPage}"
             Route="SearchPage" />
     </TabBar>
+
 </Shell>
