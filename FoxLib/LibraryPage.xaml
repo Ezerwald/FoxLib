@@ -14,22 +14,6 @@
 
     <VerticalStackLayout>
 
-        <!-- Search Row -->
-        <Grid Padding="10" ColumnSpacing="10" BackgroundColor="{StaticResource LightPurple}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-
-            <SearchBar  
-                x:Name="SearchBar"  
-                Grid.Column="0"  
-                Placeholder="Search book..."  
-                Margin="0"  
-                HeightRequest="40" />
-        </Grid>
-
         <!-- Filter tabs -->
         <Grid x:Name="TabsGrid" ColumnSpacing="0" HeightRequest="40">
             <Grid.ColumnDefinitions>

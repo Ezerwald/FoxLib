@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <Shell
     x:Class="FoxLib.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -6,6 +5,29 @@
     xmlns:local="clr-namespace:FoxLib"
     Title="FoxLib"
     Shell.FlyoutBehavior="Flyout">
+
+    <!-- Flyout Header (Thank You Message) -->
+    <Shell.FlyoutHeader>
+        <Label
+            Text="Thank you for using Foxlib!"
+            Padding="10"
+            FontSize="20"
+            FontAttributes="Bold"
+            HorizontalOptions="Center"
+            VerticalOptions="Start"
+            TextColor="DarkGray" />
+    </Shell.FlyoutHeader>
+
+    <!-- Flyout Footer (Credits) -->
+    <Shell.FlyoutFooter>
+        <Label
+            Text="Made by Vladyslav Kyshchun and Eduardo Udaeta"
+            Padding="10"
+            FontSize="12"
+            HorizontalOptions="Center"
+            VerticalOptions="End"
+            TextColor="Gray" />
+    </Shell.FlyoutFooter>
 
     <!-- Navigation bar -->
     <TabBar>
