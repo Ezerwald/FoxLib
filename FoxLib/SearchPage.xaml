@@ -15,7 +15,7 @@
         </Grid>
 
         <!-- Results List -->
-        <ScrollView Orientation="Vertical" HeightRequest="600">
+        <ScrollView Orientation="Vertical" HeightRequest="660">
             <VerticalStackLayout>
                 <CollectionView ItemsSource="{Binding SearchResults}"
                         Margin="10"

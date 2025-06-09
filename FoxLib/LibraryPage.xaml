@@ -23,15 +23,16 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="TabAll" Text="All" Grid.Column="0" Clicked="OnTabClicked" BackgroundColor="{StaticResource White}" TextColor="{StaticResource Black}"/>
-            <Button x:Name="TabBooks" Text="Active" Grid.Column="1" Clicked="OnTabClicked" BackgroundColor="{StaticResource White}" TextColor="{StaticResource Black}"/>
-            <Button x:Name="TabPoems" Text="Finished" Grid.Column="2" Clicked="OnTabClicked" BackgroundColor="{StaticResource White}" TextColor="{StaticResource Black}"/>
-            <Button x:Name="TabQuotes" Text="New" Grid.Column="3" Clicked="OnTabClicked" BackgroundColor="{StaticResource White}" TextColor="{StaticResource Black}"/>
+            <Button x:Name="TabAll" Text="All" Grid.Column="0" Clicked="OnTabClicked" Style="{StaticResource FilterTabButtonStyle}" />
+            <Button x:Name="TabBooks" Text="Active" Grid.Column="1" Clicked="OnTabClicked" Style="{StaticResource FilterTabButtonStyle}" />
+            <Button x:Name="TabPoems" Text="Finished" Grid.Column="2" Clicked="OnTabClicked" Style="{StaticResource FilterTabButtonStyle}" />
+            <Button x:Name="TabQuotes" Text="New" Grid.Column="3" Clicked="OnTabClicked" Style="{StaticResource FilterTabButtonStyle}" />
+
         </Grid>
 
 
         <!-- List Items -->
-        <ScrollView Orientation="Vertical" HeightRequest="600">
+        <ScrollView Orientation="Vertical" HeightRequest="690">
             <VerticalStackLayout>
                 <CollectionView ItemsSource="{Binding Books}"
                                 Margin="10"
@@ -67,7 +68,7 @@
                                     <!-- Three Dots Menu -->
                                     <Button Grid.Column="2"
                                             Text="⋮"
-                                            TextColor="Black"
+                                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
                                             FontSize="28"
                                             WidthRequest="10"
                                             HeightRequest="100"

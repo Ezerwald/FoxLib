@@ -45,17 +45,16 @@ public partial class LibraryPage : ContentPage
     {
         if (_selectedTab != null)
         {
-            // Reset old tab style
-            _selectedTab.BackgroundColor = Application.Current.Resources["White"] as Color ?? Colors.White;
-            _selectedTab.TextColor = Application.Current.Resources["Black"] as Color ?? Colors.Black;
+            // Reset to default filter tab style
+            _selectedTab.Style = Application.Current.Resources["FilterTabButtonStyle"] as Style;
         }
 
-        // Highlight new tab
-        newTab.BackgroundColor = Application.Current.Resources["Primary"] as Color ?? Colors.Blue;
-        newTab.TextColor = Application.Current.Resources["White"] as Color ?? Colors.White;
+        // Apply selected style
+        newTab.Style = Application.Current.Resources["SelectedFilterTabButtonStyle"] as Style;
 
         _selectedTab = newTab;
     }
+
 
     protected override void OnAppearing()
     {
