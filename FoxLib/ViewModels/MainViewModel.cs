@@ -2,6 +2,9 @@
 using System.Windows.Input;
 using FoxLib.Models;
 using System.Threading.Tasks;
+using System.Net.Http;
+using System.Text.Json;
+using System.Linq;
 
 namespace FoxLib.ViewModels
 {
@@ -13,17 +16,57 @@ namespace FoxLib.ViewModels
 
         public MainViewModel()
         {
-            LoadRecommendations();
             BookTappedCommand = new Command<Book>(async (book) => await NavigateToRecommendationAsync(book));
+            LoadRecommendationsAsync(); // 🔄 Call the async version here
         }
 
-        private void LoadRecommendations()
+        private async void LoadRecommendationsAsync()
         {
-            // You can later replace this with a real API or smarter logic
-            RecommendedBooks.Add(new Book { Title = "The Hobbit", Author = "J.R.R. Tolkien", CoverImageUrl = "", Description = "A fantasy novel..." });
-            RecommendedBooks.Add(new Book { Title = "1984", Author = "George Orwell", CoverImageUrl = "", Description = "Dystopian classic..." });
-            RecommendedBooks.Add(new Book { Title = "Dune", Author = "Frank Herbert", CoverImageUrl = "", Description = "Epic science fiction..." });
-            RecommendedBooks.Add(new Book { Title = "Foundation", Author = "Isaac Asimov", CoverImageUrl = "", Description = "Pioneering sci-fi series..." });
+            try
+            {
+                var httpClient = new HttpClient();
+                string topic = "bestseller fiction"; // You can change this topic to e.g. "top science fiction", "fantasy", etc.
+                var url = $"https://www.googleapis.com/books/v1/volumes?q={Uri.EscapeDataString(topic)}&maxResults=10";
+
+                var response = await httpClient.GetStringAsync(url);
+                var result = JsonDocument.Parse(response);
+
+                RecommendedBooks.Clear();
+
+                if (result.RootElement.TryGetProperty("items", out JsonElement items))
+                {
+                    foreach (var item in items.EnumerateArray())
+                    {
+                        var volumeInfo = item.GetProperty("volumeInfo");
+
+                        var book = new Book
+                        {
+                            Title = volumeInfo.GetPropertyOrDefault("title", "No title"),
+                            Author = volumeInfo.TryGetProperty("authors", out JsonElement authorsElement) && authorsElement.ValueKind == JsonValueKind.Array
+                                ? string.Join(", ", authorsElement.EnumerateArray().Select(a => a.GetString()))
+                                : "Unknown author",
+                            Description = volumeInfo.GetPropertyOrDefault("description", "No description"),
+                            CoverImageUrl = EnsureHttps(volumeInfo.GetNestedPropertyOrDefault("imageLinks", "thumbnail", "")),
+                            Status = ReadingStatus.New
+                        };
+
+                        RecommendedBooks.Add(book);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Optionally show a user-friendly error
+                Console.WriteLine($"Error loading recommendations: {ex.Message}");
+            }
+        }
+
+        private string EnsureHttps(string url)
+        {
+            if (string.IsNullOrWhiteSpace(url))
+                return "";
+
+            return url.StartsWith("http://") ? url.Replace("http://", "https://") : url;
         }
 
         private async Task NavigateToRecommendationAsync(Book book)
