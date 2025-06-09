@@ -14,14 +14,17 @@ namespace FoxLib.ViewModels
     {
         public ObservableCollection<Book> Books { get; set; } = new ObservableCollection<Book>();
 
-        public ICommand LoadBooksCommand { get; }
-        public ICommand AddDummyBookCommand { get; }
-
         public LibraryViewModel()
         {
             LoadBooksCommand = new Command(async () => await LoadBooksAsync());
             AddDummyBookCommand = new Command(async () => await AddDummyBookAsync());
+
+            ShowBookMenuCommand = new Command<Book>(async (book) => await ShowMenuAsync(book));
         }
+
+
+        public ICommand LoadBooksCommand { get; }
+        public ICommand AddDummyBookCommand { get; }
 
         private async Task LoadBooksAsync()
         {
@@ -56,6 +59,49 @@ namespace FoxLib.ViewModels
 
             foreach (var book in books)
                 Books.Add(book);
+        }
+
+        private async Task DeleteBookAsync(Book book)
+        {
+            if (book != null)
+            {
+                await App.Database.DeleteBookAsync(book);
+                await LoadBooksAsync();
+            }
+        }
+
+        private async Task UpdateStatusAsync(Book book, ReadingStatus status)
+        {
+            if (book != null)
+            {
+                book.Status = status;
+                await App.Database.SaveBookAsync(book);
+                await LoadBooksAsync();
+            }
+        }
+
+        public ICommand ShowBookMenuCommand { get; }
+
+        private async Task ShowMenuAsync(Book book)
+        {
+            string action = await Shell.Current.DisplayActionSheet("Book Options", "Cancel", null,
+                "Delete", "Mark as Active", "Mark as Finished", "Mark as New");
+
+            switch (action)
+            {
+                case "Delete":
+                    await DeleteBookAsync(book);
+                    break;
+                case "Mark as Active":
+                    await UpdateStatusAsync(book, ReadingStatus.Active);
+                    break;
+                case "Mark as Finished":
+                    await UpdateStatusAsync(book, ReadingStatus.Finished);
+                    break;
+                case "Mark as New":
+                    await UpdateStatusAsync(book, ReadingStatus.New);
+                    break;
+            }
         }
 
     }

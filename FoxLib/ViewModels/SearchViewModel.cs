@@ -79,7 +79,7 @@ namespace FoxLib.ViewModels
         private async Task AddToLibraryAsync(Book book)
         {
             await App.Database.SaveBookAsync(book);
-            await Application.Current.MainPage.DisplayAlert("Alert", "You added new book to Library", "OK");
+            await Application.Current.MainPage.DisplayAlert("Notification", "You added new book to Library", "OK");
         }
     }
 
