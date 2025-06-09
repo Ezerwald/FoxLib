@@ -11,13 +11,15 @@ namespace FoxLib.ViewModels
     public class MainViewModel : BaseViewModel
     {
         public ObservableCollection<Book> RecommendedBooks { get; set; } = new ObservableCollection<Book>();
+        public ObservableCollection<Book> RecentlyViewedBooks { get; set; } = new ObservableCollection<Book>();
 
         public ICommand BookTappedCommand { get; }
 
         public MainViewModel()
         {
             BookTappedCommand = new Command<Book>(async (book) => await NavigateToRecommendationAsync(book));
-            LoadRecommendationsAsync(); // 🔄 Call the async version here
+            LoadRecommendationsAsync();
+            LoadRecentlyViewedBooksAsync(); // Load local recent books
         }
 
         private async void LoadRecommendationsAsync()
@@ -77,6 +79,26 @@ namespace FoxLib.ViewModels
                 {
                     { "SelectedBook", book }
                 });
+            }
+        }
+
+        public async Task LoadRecentlyViewedBooksAsync()
+        {
+            try
+            {
+                var allBooks = await App.Database.GetBooksAsync();
+                var recentBooks = allBooks
+                    .OrderByDescending(b => b.Id) // Assuming higher ID = newer
+                    .Take(5)
+                    .ToList();
+
+                RecentlyViewedBooks.Clear();
+                foreach (var book in recentBooks)
+                    RecentlyViewedBooks.Add(book);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error loading recent books: {ex.Message}");
             }
         }
     }

@@ -52,19 +52,28 @@
         <!-- Recently Viewed Section -->
         <Frame CornerRadius="12" Padding="16">
             <VerticalStackLayout Spacing="12">
-                <Label Text="Recently viewed" FontSize="20" />
+                <Label Text="Recently saved" FontSize="20" />
                 <BoxView HeightRequest="1"/>
 
-                <!-- List Items -->
-                <VerticalStackLayout>
-                    <!-- Item Template -->
-                    <Grid ColumnDefinitions="Auto,*,Auto" Padding="4">
-                        <Image Source="place_holder.png" HeightRequest="50" Margin="0,0,20,0"/>
-                        <VerticalStackLayout Grid.Column="1">
-                            <Label Text="Book" FontAttributes="Bold" />
-                            <Label Text="Author" FontSize="12" />
-                        </VerticalStackLayout>
-                    </Grid>
+                <VerticalStackLayout BindableLayout.ItemsSource="{Binding RecentlyViewedBooks}" Spacing="8">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnDefinitions="Auto,*,Auto" Padding="4">
+                                <Image Source="{Binding CoverImageUrl}" HeightRequest="50" WidthRequest="40" Margin="0,0,20,0">
+                                    <Image.Triggers>
+                                        <DataTrigger TargetType="Image" Binding="{Binding CoverImageUrl}" Value="">
+                                            <Setter Property="Source" Value="place_holder.png"/>
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                                </Image>
+
+                                <VerticalStackLayout Grid.Column="1">
+                                    <Label Text="{Binding Title}" FontAttributes="Bold" LineBreakMode="TailTruncation" />
+                                    <Label Text="{Binding Author}" FontSize="12" LineBreakMode="TailTruncation" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
                 </VerticalStackLayout>
             </VerticalStackLayout>
         </Frame>
