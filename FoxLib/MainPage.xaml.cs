@@ -1,10 +1,12 @@
-﻿namespace FoxLib
+﻿using FoxLib.ViewModels;
+
+namespace FoxLib;
+
+public partial class MainPage : ContentPage
 {
-    public partial class MainPage : ContentPage
+    public MainPage()
     {
-        public MainPage()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+        BindingContext = new MainViewModel();
     }
 }

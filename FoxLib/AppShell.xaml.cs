@@ -7,6 +7,7 @@
             InitializeComponent();
 
             Routing.RegisterRoute(nameof(BookDetailsPage), typeof(BookDetailsPage));
+            Routing.RegisterRoute(nameof(RecommendationDetailsPage), typeof(RecommendationDetailsPage));
         }
     }
 }

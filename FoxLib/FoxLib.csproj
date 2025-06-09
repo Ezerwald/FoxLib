@@ -83,6 +83,9 @@
 	  <MauiXaml Update="LibraryPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="RecommendationDetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Resources\Styles\ColorsCustom.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

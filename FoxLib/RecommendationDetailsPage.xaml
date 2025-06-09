@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoxLib.RecommendationDetailsPage"
+             Title="{Binding Title}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Image Source="{Binding CoverImageUrl}" HeightRequest="200" Aspect="AspectFit">
+                <Image.Triggers>
+                    <DataTrigger TargetType="Image" Binding="{Binding CoverImageUrl}" Value="">
+                        <Setter Property="Source" Value="place_holder.png"/>
+                    </DataTrigger>
+                </Image.Triggers>
+            </Image>
+
+            <Label Text="{Binding Title}" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" />
+            <Label Text="{Binding Author}" FontSize="18" HorizontalOptions="Center" />
+            <Label Text="{Binding Description}" FontSize="16" />
+
+            <Button Text="Add to Library" Command="{Binding AddToLibraryCommand}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

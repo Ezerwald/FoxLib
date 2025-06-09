@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FoxLib.MainPage">
+             x:Class="FoxLib.MainPage"
+             x:Name="MainPageRoot">
 
     <VerticalStackLayout
             Padding="30,0"
@@ -15,42 +16,38 @@
 
         <!-- Suggestions Carousel -->
         <ScrollView Orientation="Horizontal">
-            <HorizontalStackLayout HeightRequest="170" Spacing="12">
-                <!-- Example Card -->
-                <Frame CornerRadius="12" Padding="8" WidthRequest="130">
-                    <VerticalStackLayout>
-                        <Image Source="place_holder.png" HeightRequest="100" />
-                        <Label Text="Book 1" FontAttributes="Bold" FontSize="14" />
-                        <Label Text="Author" FontSize="12" />
-                    </VerticalStackLayout>
-                </Frame>
+            <HorizontalStackLayout HeightRequest="170" Spacing="12"
+                           BindableLayout.ItemsSource="{Binding RecommendedBooks}">
 
-                <Frame CornerRadius="12" Padding="8" WidthRequest="130">
-                    <VerticalStackLayout>
-                        <Image Source="place_holder.png" HeightRequest="100" />
-                        <Label Text="Book 2" FontAttributes="Bold" FontSize="14" />
-                        <Label Text="Author" FontSize="12" />
-                    </VerticalStackLayout>
-                </Frame>
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Frame CornerRadius="12" Padding="8" WidthRequest="130">
+                            <VerticalStackLayout>
 
-                <Frame CornerRadius="12" Padding="8" WidthRequest="130">
-                    <VerticalStackLayout>
-                        <Image Source="place_holder.png" HeightRequest="100" />
-                        <Label Text="Book 3" FontAttributes="Bold" FontSize="14" />
-                        <Label Text="Author" FontSize="12" />
-                    </VerticalStackLayout>
-                </Frame>
+                                <Image Source="{Binding CoverImageUrl}" HeightRequest="100">
+                                    <Image.Triggers>
+                                        <DataTrigger TargetType="Image" Binding="{Binding CoverImageUrl}" Value="">
+                                            <Setter Property="Source" Value="place_holder.png"/>
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                                </Image>
 
-                <Frame CornerRadius="12" Padding="8" WidthRequest="130">
-                    <VerticalStackLayout>
-                        <Image Source="place_holder.png" HeightRequest="100" />
-                        <Label Text="Book 4" FontAttributes="Bold" FontSize="14" />
-                        <Label Text="Author" FontSize="12" />
-                    </VerticalStackLayout>
-                </Frame>
+                                <Label Text="{Binding Title}" FontAttributes="Bold" FontSize="14" />
+                                <Label Text="{Binding Author}" FontSize="12" />
 
+                            </VerticalStackLayout>
+
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer
+                            Command="{Binding BindingContext.BookTappedCommand, Source={x:Reference Name=MainPageRoot}}"
+                            CommandParameter="{Binding .}" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
             </HorizontalStackLayout>
         </ScrollView>
+
 
         <!-- Recently Viewed Section -->
         <Frame CornerRadius="12" Padding="16">
